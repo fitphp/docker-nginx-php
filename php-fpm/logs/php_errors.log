@@ -1,0 +1,1 @@
+[23-Jan-2021 13:06:56 Asia/Shanghai] PHP Fatal error:  Cannot override final method Dcat\Admin\Extend\ServiceProvider::boot() in /var/www/html/dataman/extensions/fitphp/simditor/src/SimditorServiceProvider.php on line 14
