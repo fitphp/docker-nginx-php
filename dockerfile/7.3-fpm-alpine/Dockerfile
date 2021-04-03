@@ -16,7 +16,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp -r -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/  \
-    && docker-php-ext-install -j$(nproc) gd zip ldap gettext bcmath sockets pdo pdo_mysql mysqli \
+    && docker-php-ext-install -j$(nproc) gd zip ldap seaslog gettext bcmath sockets pdo pdo_mysql mysqli \
     && pecl install redis  \
     && docker-php-ext-enable  redis \
     && apk del --purge --progress .build-deps tzdata
