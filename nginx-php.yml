@@ -6,7 +6,7 @@ services:
         container_name: nginx
         restart: always 
         volumes:  
-            - ${WEBSITE_PATH}:/var/www/html
+            - ../:/var/www/html
             - ./nginx/conf/conf.d:/etc/nginx/conf.d
             - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
         depends_on:
@@ -25,7 +25,7 @@ services:
         container_name: php80-fpm
         restart: always 
         volumes:  
-            - ${WEBSITE_PATH}:/var/www/html
+            - ../:/var/www/html
             - ./php-fpm/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
             - ./php-fpm/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf
         network_mode: bridge
@@ -35,7 +35,7 @@ services:
         container_name: php73-fpm
         restart: always 
         volumes:  
-            - ${WEBSITE_PATH}:/var/www/html
+            - ../:/var/www/html
             - ./php-fpm/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
             - ./php-fpm/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf
         network_mode: bridge
