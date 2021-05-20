@@ -11,11 +11,9 @@ services:
             - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
         depends_on:
             - php73-fpm
-            - php74-fpm
             - php80-fpm
         links:
             - php73-fpm
-            - php74-fpm
             - php80-fpm
         ports:  
             - 80:80/tcp
@@ -32,21 +30,11 @@ services:
             - ./php-fpm/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf
         network_mode: bridge
 
-    php74-fpm:
-        image: bincent/php:7.4-fpm-alpine
-        container_name: php74-fpm
-        restart: always
-        volumes:
-            - ../:/var/www/html
-            - ./php-fpm/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
-            - ./php-fpm/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf
-        network_mode: bridge
-
     php73-fpm:
         image: bincent/php:7.3-fpm-alpine
         container_name: php73-fpm
-        restart: always 
-        volumes:  
+        restart: always
+        volumes:
             - ../:/var/www/html
             - ./php-fpm/conf/php.ini:/usr/local/etc/php/conf.d/php.ini
             - ./php-fpm/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf
