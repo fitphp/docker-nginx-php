@@ -1,5 +1,5 @@
 FROM composer:latest as composer
-FROM php:7.4-fpm-alpine3.16
+FROM php:8.1-fpm-alpine
 
 LABEL maintainer="Boolean <hongbin.hsu@bincent.com>"
 
@@ -15,8 +15,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && apk add libldap libintl libpng libjpeg freetype libzip \
     && cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
-    && docker-php-ext-configure gd --with-jpeg=/usr/include --with-freetype=/usr/include/freetype2/  \
+    && docker-php-ext-configure gd --with-jpeg=/usr/include --with-freetype=/usr/include/freetype2/ \
     && docker-php-ext-install -j$(nproc) gd zip ldap gettext bcmath sockets pdo pdo_mysql mysqli \
     && pecl install redis seaslog \
-    && docker-php-ext-enable  redis seaslog \
+    && docker-php-ext-enable redis seaslog \
     && apk del --purge --progress .build-deps tzdata
