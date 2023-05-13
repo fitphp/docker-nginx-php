@@ -1,5 +1,5 @@
 FROM docker.io/library/composer:latest as composer
-FROM docker.io/library/php:fpm-alpine
+FROM docker.io/library/php:8-fpm-alpine
 
 LABEL maintainer="Boolean <hongbin.hsu@bincent.com>"
 
